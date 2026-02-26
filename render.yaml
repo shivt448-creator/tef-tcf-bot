@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: tef-tcf-bot
+    env: node
+    buildCommand: npm install -g n8n
+    startCommand: n8n start
+    envVars:
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: NODE_ENV
+        value: production
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
